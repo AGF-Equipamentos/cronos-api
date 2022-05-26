@@ -4,7 +4,8 @@
   "info": {
     "singularName": "standart-time",
     "pluralName": "standart-times",
-    "displayName": "Standart Time"
+    "displayName": "Standart Time",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -14,7 +15,7 @@
     "part_number": {
       "type": "string",
       "required": false,
-      "unique": true
+      "unique": false
     },
     "time_in_minutes": {
       "type": "decimal",
