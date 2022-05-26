@@ -1,0 +1,22 @@
+{
+    "env": {
+        "commonjs": true,
+        "es2021": true,
+        "node": true,
+        "browser": false,
+        "jest": true,
+    },
+    "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+    "parserOptions": {
+        "ecmaFeatures": {
+          "experimentalObjectRestSpread": true,
+          "jsx": false
+        },
+        "sourceType": "module"
+      },
+    "globals": {
+        "strapi": true
+    },
+    "rules": {
+    }
+}

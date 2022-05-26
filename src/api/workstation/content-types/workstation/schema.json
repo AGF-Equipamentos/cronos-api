@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "workstations",
+  "info": {
+    "singularName": "workstation",
+    "pluralName": "workstations",
+    "displayName": "Workstation"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "process": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::process.process",
+      "inversedBy": "workstations"
+    },
+    "downtime": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::downtime.downtime",
+      "inversedBy": "workstations"
+    }
+  }
+}

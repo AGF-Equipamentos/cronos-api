@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_po_times_po_times",
+  "info": {
+    "displayName": "PO Times",
+    "icon": "align-justify",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "process": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::process.process"
+    },
+    "department": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::department.department"
+    },
+    "workstation": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::workstation.workstation"
+    },
+    "datetime_start": {
+      "type": "datetime",
+      "required": false
+    },
+    "datetime_end": {
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "processes",
+  "info": {
+    "singularName": "process",
+    "pluralName": "processes",
+    "displayName": "Process"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "workstations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::workstation.workstation",
+      "mappedBy": "process"
+    }
+  }
+}

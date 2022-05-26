@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "standart_times",
+  "info": {
+    "singularName": "standart-time",
+    "pluralName": "standart-times",
+    "displayName": "Standart Time"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "part_number": {
+      "type": "string",
+      "required": false,
+      "unique": true
+    },
+    "time_in_minutes": {
+      "type": "decimal",
+      "required": true
+    },
+    "process": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::process.process"
+    }
+  }
+}

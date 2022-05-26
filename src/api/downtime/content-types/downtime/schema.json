@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "downtimes",
+  "info": {
+    "singularName": "downtime",
+    "pluralName": "downtimes",
+    "displayName": "Downtime"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "obs": {
+      "type": "text",
+      "required": true
+    },
+    "datetime_start": {
+      "type": "datetime",
+      "required": true
+    },
+    "datetime_end": {
+      "type": "datetime",
+      "required": true
+    },
+    "department": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::department.department"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "stop_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::stop-type.stop-type"
+    },
+    "workstations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::workstation.workstation",
+      "mappedBy": "downtime"
+    },
+    "process": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::process.process"
+    }
+  }
+}

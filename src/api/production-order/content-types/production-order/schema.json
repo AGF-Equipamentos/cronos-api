@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "production_orders",
+  "info": {
+    "singularName": "production-order",
+    "pluralName": "production-orders",
+    "displayName": "Production Order"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "part_number": {
+      "type": "string",
+      "unique": true
+    },
+    "qty": {
+      "type": "decimal",
+      "required": true
+    },
+    "obs": {
+      "type": "string"
+    },
+    "po_times": {
+      "type": "component",
+      "repeatable": true,
+      "component": "po-times.po-times"
+    }
+  }
+}
