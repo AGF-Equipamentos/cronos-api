@@ -4,7 +4,8 @@
   "info": {
     "singularName": "department",
     "pluralName": "departments",
-    "displayName": "Department"
+    "displayName": "Department",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -16,7 +17,7 @@
       "required": true,
       "unique": true
     },
-    "users_permissions_users": {
+    "users": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "plugin::users-permissions.user",

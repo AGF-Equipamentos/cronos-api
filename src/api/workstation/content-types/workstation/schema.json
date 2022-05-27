@@ -4,7 +4,8 @@
   "info": {
     "singularName": "workstation",
     "pluralName": "workstations",
-    "displayName": "Workstation"
+    "displayName": "Workstation",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -15,17 +16,10 @@
       "type": "string",
       "required": true
     },
-    "process": {
+    "processes": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::process.process",
-      "inversedBy": "workstations"
-    },
-    "downtime": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::downtime.downtime",
-      "inversedBy": "workstations"
+      "relation": "oneToMany",
+      "target": "api::process.process"
     }
   }
 }

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "downtime",
     "pluralName": "downtimes",
-    "displayName": "Downtime"
+    "displayName": "Downtime",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -38,11 +39,10 @@
       "relation": "oneToOne",
       "target": "api::stop-type.stop-type"
     },
-    "workstations": {
+    "workstation": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::workstation.workstation",
-      "mappedBy": "downtime"
+      "relation": "oneToOne",
+      "target": "api::workstation.workstation"
     },
     "process": {
       "type": "relation",

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "production-order",
     "pluralName": "production-orders",
-    "displayName": "Production Order"
+    "displayName": "Production Order",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -13,7 +14,7 @@
   "attributes": {
     "part_number": {
       "type": "string",
-      "unique": true
+      "unique": false
     },
     "qty": {
       "type": "decimal",

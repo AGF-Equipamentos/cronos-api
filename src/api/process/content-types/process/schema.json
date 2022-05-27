@@ -14,12 +14,6 @@
     "name": {
       "type": "string",
       "required": true
-    },
-    "workstations": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::workstation.workstation",
-      "mappedBy": "process"
     }
   }
 }

@@ -65,8 +65,9 @@
     },
     "department": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::department.department"
+      "relation": "manyToOne",
+      "target": "api::department.department",
+      "inversedBy": "users"
     }
   }
 }
