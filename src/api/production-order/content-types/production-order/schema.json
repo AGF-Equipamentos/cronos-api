@@ -24,9 +24,10 @@
       "type": "string"
     },
     "po_times": {
-      "type": "component",
-      "repeatable": true,
-      "component": "po-times.po-times"
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::po-time.po-time",
+      "mappedBy": "production_order"
     }
   }
 }

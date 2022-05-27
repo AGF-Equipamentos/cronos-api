@@ -1,9 +1,9 @@
 'use strict'
 
 module.exports = {
-  async index(ctx, next) {
+  async index(ctx) {
     try {
-      const { byParam, workstation, part_number } = ctx.request.query
+      const { byParam, part_number } = ctx.request.query
       let data
       switch (byParam) {
         case 'day':
@@ -23,7 +23,6 @@ module.exports = {
           break
       }
 
-      console.log(byParam, part_number)
       ctx.body = data
       return ctx
     } catch (err) {

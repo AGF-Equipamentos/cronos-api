@@ -1,11 +1,16 @@
 {
-  "collectionName": "components_po_times_po_times",
+  "kind": "collectionType",
+  "collectionName": "po_times",
   "info": {
-    "displayName": "PO Times",
-    "icon": "align-justify",
+    "singularName": "po-time",
+    "pluralName": "po-times",
+    "displayName": "PO Time",
     "description": ""
   },
-  "options": {},
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
   "attributes": {
     "users_permissions_user": {
       "type": "relation",
@@ -28,11 +33,21 @@
       "target": "api::workstation.workstation"
     },
     "datetime_start": {
-      "type": "datetime",
-      "required": false
+      "type": "datetime"
     },
     "datetime_end": {
       "type": "datetime"
+    },
+    "production_order": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::production-order.production-order",
+      "inversedBy": "po_times"
+    },
+    "standart_time": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::standart-time.standart-time"
     }
   }
 }

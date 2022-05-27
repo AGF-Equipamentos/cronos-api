@@ -1,20 +1,20 @@
 var getWeek = require('date-fns/getWeek')
 
-const getEfficiency = (labors) => {
-  const laborsEfficiency = labors.map((labor) => ({
-    ...labor,
+const getEfficiency = (po_times) => {
+  const po_timesEfficiency = po_times.map((po_time) => ({
+    ...po_time,
     // time_in_minutes / ((datetime_end - datetime_start) / qty) average time by piece
     efficiency:
-     labor.pn_time.time_in_minutes /
-      ((new Date(labor.datetime_end) - new Date(labor.datetime_start)) /
+      po_time.standart_time.time_in_minutes /
+      ((new Date(po_time.datetime_end) - new Date(po_time.datetime_start)) /
         (1000 * 60) /
-        labor.qty),
-    day: new Date(labor.datetime_end).getDate(),
-    week: getWeek(new Date(labor.datetime_end)),
-    month: new Date(labor.datetime_end).getMonth() + 1
+        po_time.production_order.qty),
+    day: new Date(po_time.datetime_end).getDate(),
+    week: getWeek(new Date(po_time.datetime_end)),
+    month: new Date(po_time.datetime_end).getMonth() + 1
   }))
 
-  return laborsEfficiency
+  return po_timesEfficiency
 }
 
 module.exports = {

@@ -1,24 +1,29 @@
-
-const getAverage = (laborsEfficiency, byParam) => {
-  const laborSumAndCount = laborsEfficiency.reduce((acc, labor) => {
-    if (!acc[labor[byParam]]) {
-      acc[labor[byParam]] = { efficiency: (labor.efficiency * labor.qty), count: labor.qty }
+const getAverage = (times, byParam, aggregator) => {
+  const po_timeSumAndCount = times.reduce((acc, po_time) => {
+    if (!acc[po_time[byParam]]) {
+      acc[po_time[byParam]] = {
+        efficiency: po_time.efficiency * po_time.production_order.qty,
+        count: po_time.production_order.qty
+      }
       return acc
     }
-    acc[labor[byParam]].efficiency = acc[labor[byParam]].efficiency + (labor.efficiency * labor.qty)
-    acc[labor[byParam]].count = acc[labor[byParam]].count + labor.qty
+    acc[po_time[byParam]].efficiency =
+      acc[po_time[byParam]].efficiency +
+      po_time.efficiency * po_time.production_order.qty
+    acc[po_time[byParam]].count =
+      acc[po_time[byParam]].count + po_time.production_order.qty
     return acc
   }, {})
 
-  const laborAvg = Object.keys(laborSumAndCount).map((param) => {
-    const item = laborSumAndCount[param]
+  const po_timeAvg = Object.keys(po_timeSumAndCount).map((param) => {
+    const item = po_timeSumAndCount[param]
     return {
       [byParam]: Number(param),
       efficiency: Math.round((item.efficiency / item.count) * 100) / 100
     }
   })
 
-  return laborAvg
+  return po_timeAvg
 }
 
 module.exports = {

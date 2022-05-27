@@ -1,36 +1,33 @@
 'use strict'
 
 const { sub } = require('date-fns')
-const {
-  getAverage
-} = require('../../../utils/average/getAverage')
+const { getAverage } = require('../../../utils/average/getAverage')
 const { getEfficiency } = require('../../../utils/efficiency/getEfficiency')
-
-/**
- * pages-report service.
- */
 
 module.exports = {
   byDay: async (part_number) => {
     try {
-      const labors = await strapi.entityService.findMany('api::labor.labor', {
-        fields: ['part_number', 'qty', 'datetime_start', 'datetime_end'],
-        filters: {
-          part_number: part_number,
-          datetime_end: {
-            $gte: sub(new Date(), {
-              days: 30
-            })
-          }
-        },
-        populate: { pn_time: true }
-      })
+      const po_times = await strapi.entityService.findMany(
+        'api::po-time.po-time',
+        {
+          fields: ['datetime_start', 'datetime_end'],
+          filters: {
+            production_order: { part_number: part_number },
+            datetime_end: {
+              $gte: sub(new Date(), {
+                days: 30
+              })
+            }
+          },
+          populate: ['production_order', 'standart_time']
+        }
+      )
 
-      const laborsEfficiency = getEfficiency(labors)
+      const po_timesEfficiency = getEfficiency(po_times)
 
-      const laborAvg = getAverage(laborsEfficiency, 'day')
+      const po_timeAvg = getAverage(po_timesEfficiency, 'day')
 
-      return laborAvg
+      return po_timeAvg
     } catch (err) {
       console.log(err)
       return err
@@ -42,24 +39,27 @@ module.exports = {
       // fetching the data
       // we dont really need contentSections for this example.
       // its kept here, just for your reference
-      const labors = await strapi.entityService.findMany('api::labor.labor', {
-        fields: ['part_number', 'qty', 'datetime_start', 'datetime_end'],
-        filters: {
-          part_number: part_number,
-          datetime_end: {
-            $gte: sub(new Date(), {
-              months: 3
-            })
-          }
-        },
-        populate: { pn_time: true }
-      })
+      const po_times = await strapi.entityService.findMany(
+        'api::po-time.po-time',
+        {
+          fields: ['datetime_start', 'datetime_end'],
+          filters: {
+            production_order: { part_number: part_number },
+            datetime_end: {
+              $gte: sub(new Date(), {
+                months: 3
+              })
+            }
+          },
+          populate: ['production_order', 'standart_time']
+        }
+      )
 
-      const laborsEfficiency = getEfficiency(labors)
+      const po_timesEfficiency = getEfficiency(po_times)
 
-      const laborAvg = getAverage(laborsEfficiency, 'week')
+      const po_timeAvg = getAverage(po_timesEfficiency, 'week')
 
-      return laborAvg
+      return po_timeAvg
     } catch (err) {
       console.log(err)
       return err
@@ -71,24 +71,27 @@ module.exports = {
       // fetching the data
       // we dont really need contentSections for this example.
       // its kept here, just for your reference
-      const labors = await strapi.entityService.findMany('api::labor.labor', {
-        fields: ['part_number', 'qty', 'datetime_start', 'datetime_end'],
-        filters: {
-          part_number: part_number,
-          datetime_end: {
-            $gte: sub(new Date(), {
-              months: 12
-            })
-          }
-        },
-        populate: { pn_time: true }
-      })
+      const po_times = await strapi.entityService.findMany(
+        'api::po-time.po-time',
+        {
+          fields: ['datetime_start', 'datetime_end'],
+          filters: {
+            production_order: { part_number: part_number },
+            datetime_end: {
+              $gte: sub(new Date(), {
+                months: 12
+              })
+            }
+          },
+          populate: ['production_order', 'standart_time']
+        }
+      )
 
-      const laborsEfficiency = getEfficiency(labors)
+      const po_timesEfficiency = getEfficiency(po_times)
 
-      const laborAvg = getAverage(laborsEfficiency, 'month')
+      const po_timeAvg = getAverage(po_timesEfficiency, 'month')
 
-      return laborAvg
+      return po_timeAvg
     } catch (err) {
       console.log(err)
       return err

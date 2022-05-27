@@ -1,65 +1,59 @@
-const { byDayMock } = require("../average/mock")
-const { getEfficiency } = require("./getEfficiency")
-const { laborsMock } = require("./mock")
+//const { byDayMock } = require('../average/mock')
+const { getEfficiency } = require('./getEfficiency')
+const { po_timesMock } = require('./mock')
 
 describe('getEfficiency', () => {
   it('should calculate the efficiency', () => {
-    const efficiencyEfficiency = getEfficiency(laborsMock)
+    const efficiencyEfficiency = getEfficiency(po_timesMock)
 
     expect(efficiencyEfficiency).toMatchObject([
       {
-        "id": 3,
-        "part_number": "VIXMOT0011",
-        "qty": 5,
-        "datetime_start":  new Date(2022, 4, 3, 0, 5),
-        "datetime_end": new Date(2022, 4, 3, 0, 14),
-        "pn_time": {
-          "id": 1,
-          "part_number": "VIXMOT0011",
-          "time_in_minutes": 10,
-          "createdAt": "2022-05-11T14:06:55.302Z",
-          "updatedAt": "2022-05-11T14:06:55.302Z"
+        id: 1,
+        datetime_start: new Date(2022, 5, 27, 0, 5),
+        datetime_end: new Date(2022, 5, 27, 0, 11),
+        production_order: {
+          id: 3,
+          part_number: 'VIXMOT0011',
+          qty: 2,
+          obs: 'Teste',
+          createdAt: '2022-05-26T15:17:04.697Z',
+          updatedAt: '2022-05-27T12:51:33.288Z'
         },
-        "day": 3,
-        "efficiency": 10 / 1.8, // (14 - 5) / 5
-        "month": 5,
-        "week": 19
+        standart_time: {
+          id: 1,
+          part_number: 'VIXMOT0011',
+          time_in_minutes: 10,
+          createdAt: '2022-05-26T13:50:15.686Z',
+          updatedAt: '2022-05-26T13:50:15.686Z'
+        },
+        day: 27,
+        efficiency: 10 / 3, // (11 - 5) / 2
+        month: 6,
+        week: 27
       },
       {
-        "id": 3,
-        "part_number": "VIXMOT0011",
-        "qty": 8,
-        "datetime_start":  new Date(2022, 4, 3, 0, 18),
-        "datetime_end": new Date(2022, 4, 3, 0, 29),
-        "pn_time": {
-          "id": 1,
-          "part_number": "VIXMOT0011",
-          "time_in_minutes": 10,
-          "createdAt": "2022-05-11T14:06:55.302Z",
-          "updatedAt": "2022-05-11T14:06:55.302Z"
+        id: 2,
+        datetime_start: new Date(2022, 5, 26, 0, 1),
+        datetime_end: new Date(2022, 5, 26, 0, 10),
+        production_order: {
+          id: 3,
+          part_number: 'VIXMOT0011',
+          qty: 2,
+          obs: 'Teste',
+          createdAt: '2022-05-26T15:17:04.697Z',
+          updatedAt: '2022-05-27T12:51:33.288Z'
         },
-        "day": 3,
-        "efficiency": 10 / 1.375, // (29 - 18) / 8
-        "month": 5,
-        "week": 19
-      },
-      {
-        "id": 3,
-        "part_number": "VIXMOT0011",
-        "qty": 15,
-        "datetime_start":  new Date(2022, 4, 3, 0, 5),
-        "datetime_end": new Date(2022, 4, 3, 0, 80),
-        "pn_time": {
-          "id": 1,
-          "part_number": "VIXMOT0011",
-          "time_in_minutes": 10,
-          "createdAt": "2022-05-11T14:06:55.302Z",
-          "updatedAt": "2022-05-11T14:06:55.302Z"
+        standart_time: {
+          id: 2,
+          part_number: 'VIXMOT0011',
+          time_in_minutes: 15.5,
+          createdAt: '2022-05-26T13:54:31.891Z',
+          updatedAt: '2022-05-26T13:54:31.891Z'
         },
-        "day": 3,
-        "efficiency": 10 / 5, // (80 - 5) / 15
-        "month": 5,
-        "week": 19
+        day: 26,
+        efficiency: 15.5 / 4.5, // (10 - 1) / 2
+        month: 6,
+        week: 27
       }
     ])
   })
