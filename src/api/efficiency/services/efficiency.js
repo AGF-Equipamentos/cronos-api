@@ -27,7 +27,7 @@ module.exports = {
 
       const po_timeAvg = getAverage(po_timesEfficiency, 'day')
 
-      return po_timeAvg
+      return po_timesEfficiency
     } catch (err) {
       console.log(err)
       return err

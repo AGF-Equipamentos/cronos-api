@@ -1,15 +1,15 @@
-const { getEfficiency } = require('./getEfficiency')
-const { po_timesMock } = require('./mock')
+const { getDown_time } = require('./getDown_time')
+const { Down_timeMock } = require('./mock')
 
-describe('getEfficiency', () => {
-  it('should calculate the efficiency', () => {
-    const efficiencyEfficiency = getEfficiency(po_timesMock)
+describe('getDown_time', () => {
+  it('should calculate the Down_time', () => {
+    const down_time = getDown_time(Down_timeMock)
 
-    expect(efficiencyEfficiency).toMatchObject([
+    expect(down_time).toMatchObject([
       {
         id: 1,
-        datetime_start: new Date(2022, 5, 27, 0, 5),
-        datetime_end: new Date(2022, 5, 27, 0, 11),
+        datetime_start: '2022-05-27T03:05:00.000Z',
+        datetime_end: '2022-05-27T03:11:00.000Z',
         production_order: {
           id: 3,
           part_number: 'VIXMOT0011',
@@ -25,15 +25,16 @@ describe('getEfficiency', () => {
           createdAt: '2022-05-26T13:50:15.686Z',
           updatedAt: '2022-05-26T13:50:15.686Z'
         },
+        rt_in_minutes: 6,
+        efficiency: 3.3333333333333335,
         day: 27,
-        efficiency: 10 / 3, // (11 - 5) / 2
-        month: 6,
-        week: 27
+        week: 22,
+        month: 5
       },
       {
         id: 2,
-        datetime_start: new Date(2022, 5, 26, 0, 1),
-        datetime_end: new Date(2022, 5, 26, 0, 10),
+        datetime_start: '2022-05-26T03:01:00.000Z',
+        datetime_end: '2022-05-26T03:10:00.000Z',
         production_order: {
           id: 3,
           part_number: 'VIXMOT0011',
@@ -49,10 +50,11 @@ describe('getEfficiency', () => {
           createdAt: '2022-05-26T13:54:31.891Z',
           updatedAt: '2022-05-26T13:54:31.891Z'
         },
+        rt_in_minutes: 9,
+        efficiency: 3.4444444444444446,
         day: 26,
-        efficiency: 15.5 / 4.5, // (10 - 1) / 2
-        month: 6,
-        week: 27
+        week: 22,
+        month: 5
       }
     ])
   })
