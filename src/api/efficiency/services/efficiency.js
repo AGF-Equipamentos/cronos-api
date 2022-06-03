@@ -1,7 +1,9 @@
 'use strict'
 
 const { sub } = require('date-fns')
-const { getAverage } = require('../../../utils/average/getAverage')
+const {
+  getEfficienctAverageByParam
+} = require('../../../utils/average/getEfficienctAverageByParam')
 const { getEfficiency } = require('../../../utils/efficiency/getEfficiency')
 
 module.exports = {
@@ -25,9 +27,9 @@ module.exports = {
 
       const po_timesEfficiency = getEfficiency(po_times)
 
-      const po_timeAvg = getAverage(po_timesEfficiency, 'day')
+      const po_timeAvg = getEfficienctAverageByParam(po_timesEfficiency, 'day')
 
-      return po_timesEfficiency
+      return po_timeAvg
     } catch (err) {
       console.log(err)
       return err
@@ -57,7 +59,7 @@ module.exports = {
 
       const po_timesEfficiency = getEfficiency(po_times)
 
-      const po_timeAvg = getAverage(po_timesEfficiency, 'week')
+      const po_timeAvg = getEfficienctAverageByParam(po_timesEfficiency, 'week')
 
       return po_timeAvg
     } catch (err) {
@@ -89,7 +91,10 @@ module.exports = {
 
       const po_timesEfficiency = getEfficiency(po_times)
 
-      const po_timeAvg = getAverage(po_timesEfficiency, 'month')
+      const po_timeAvg = getEfficienctAverageByParam(
+        po_timesEfficiency,
+        'month'
+      )
 
       return po_timeAvg
     } catch (err) {

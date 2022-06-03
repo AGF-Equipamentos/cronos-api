@@ -5,7 +5,7 @@ describe('getEfficiency', () => {
   it('should calculate the efficiency', () => {
     const efficiencyEfficiency = getEfficiency(po_timesMock)
 
-    expect(efficiencyEfficiency).toMatchObject([
+    expect(efficiencyEfficiency).toStrictEqual([
       {
         id: 1,
         datetime_start: new Date(2022, 5, 27, 0, 5),
@@ -26,9 +26,10 @@ describe('getEfficiency', () => {
           updatedAt: '2022-05-26T13:50:15.686Z'
         },
         day: 27,
-        efficiency: 10 / 3, // (11 - 5) / 2
+        efficiency: 10 / 3, // 3 => (11 - 5) / 2
         month: 6,
-        week: 27
+        week: 27,
+        rt_in_minutes: 6
       },
       {
         id: 2,
@@ -50,9 +51,10 @@ describe('getEfficiency', () => {
           updatedAt: '2022-05-26T13:54:31.891Z'
         },
         day: 26,
-        efficiency: 15.5 / 4.5, // (10 - 1) / 2
+        efficiency: 15.5 / 4.5, // 4.5 => (10 - 1) / 2
         month: 6,
-        week: 27
+        week: 27,
+        rt_in_minutes: 9
       }
     ])
   })
