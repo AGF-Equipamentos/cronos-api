@@ -11,10 +11,10 @@ const getEfficienctAverageByParam = (times, byParam) => {
     acc[po_time[byParam]].efficiency =
       acc[po_time[byParam]].efficiency +
       po_time.efficiency * po_time.production_order.qty
-    ;(acc[po_time[byParam]].count =
-      acc[po_time[byParam]].count + po_time.production_order.qty),
-      (acc[po_time[byParam]].rtt_in_minutes =
-        acc[po_time[byParam]].rtt_in_minutes + po_time.rt_in_minutes)
+    acc[po_time[byParam]].count =
+      acc[po_time[byParam]].count + po_time.production_order.qty
+    acc[po_time[byParam]].rtt_in_minutes =
+      acc[po_time[byParam]].rtt_in_minutes + po_time.rt_in_minutes
     return acc
   }, {})
 

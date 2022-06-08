@@ -1,4 +1,4 @@
-const { byDayDT } = require('../total/mock')
+const { byDayDT } = require('../downTimeTotal/mock')
 const { getDownTimeTotalByParam } = require('./getDownTimeTotalByParam')
 
 describe('getDownTimeTotalByParam', () => {
