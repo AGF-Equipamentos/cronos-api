@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "purchase_orders",
+  "info": {
+    "singularName": "purchase-order",
+    "pluralName": "purchase-orders",
+    "displayName": "Purchase Order",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tags": {
+      "type": "text"
+    },
+    "observation": {
+      "type": "text"
+    },
+    "protheus_number": {
+      "type": "string"
+    }
+  }
+}
