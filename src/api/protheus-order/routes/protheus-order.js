@@ -2,21 +2,21 @@ module.exports = {
   routes: [
     {
       method: 'GET',
-      path: '/protheus-order',
+      path: '/protheus-orders',
       handler: 'protheus-order.index',
       config: {
         policies: [],
         middlewares: []
       }
-    }
-    /*    {
-       method: 'GET',
-      path: '/efficiency/:name',
-      handler: 'efficiency.labor',
+    },
+    {
+      method: 'PUT',
+      path: '/protheus-orders',
+      handler: 'protheus-order.update',
       config: {
         policies: [],
-        middlewares: [],
-      },
-     } */
+        middlewares: []
+      }
+    }
   ]
 }

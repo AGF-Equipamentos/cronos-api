@@ -68,6 +68,13 @@
       "relation": "manyToOne",
       "target": "api::department.department",
       "inversedBy": "users"
+    },
+    "protheus_code": {
+      "type": "uid",
+      "required": true
+    },
+    "name": {
+      "type": "string"
     }
   }
 }

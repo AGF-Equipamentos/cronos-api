@@ -5,7 +5,7 @@ const { default: axios } = require('axios')
 module.exports = {
   protheus: async () => {
     const { data: protheusOrders } = await axios.get(
-      'http://localhost:3333/purchases-grouped',
+      'https://api.agfequipamentos.com.br/purchases-grouped',
       {
         params: {
           branch: '0101'
@@ -17,56 +17,94 @@ module.exports = {
       'api::purchase-order.purchase-order'
     )
 
-    console.log(strapiOrders)
-    console.log('TESTE')
+    const users = await strapi.db
+      .query('plugin::users-permissions.user')
+      .findMany('api::user.user')
 
-    const purchaseOrders = protheusOrders.map((order) => {
+    const purchaseOrders = protheusOrders.map((protheusOrder) => {
+      let mergedOrders = protheusOrder
+      let status = 'Aguardando aprovação'
+
       const strapiOrderFinded = strapiOrders.find(
-        (strapiOrder) => strapiOrder.protheus_number === order.number
+        (strapiOrder) => strapiOrder.protheus_number === protheusOrder.number
       )
 
-      if (strapiOrderFinded) {
-        return {
-          ...order,
-          ...strapiOrderFinded
+      const userFinded = users.find(
+        (user) => user.protheus_code === protheusOrder.buyer
+      )
+
+      if (userFinded) {
+        mergedOrders = {
+          ...mergedOrders,
+          buyer: userFinded.name ? userFinded.name : userFinded.username
         }
       }
-      return {
-        ...order,
-        id: null,
-        tags: null,
-        observation: null,
-        createdAt: null,
-        updatedAt: null
+
+      if (protheusOrder.approved === 'yes') {
+        status = 'Aguardando envio ao fornecedor'
       }
+
+      if (strapiOrderFinded) {
+        switch (strapiOrderFinded.status) {
+          case 'Confirmado':
+            if (new Date(protheusOrder.delivery) < new Date()) {
+              status = 'Atrasado'
+            } else {
+              status = strapiOrderFinded.status
+            }
+            break
+          case null:
+            break
+          default:
+            status = strapiOrderFinded.status
+        }
+
+        mergedOrders = {
+          ...mergedOrders,
+          ...strapiOrderFinded,
+          status
+        }
+      } else {
+        mergedOrders = {
+          ...mergedOrders,
+          id: '',
+          tags: '',
+          observation: '',
+          createdAt: '',
+          updatedAt: '',
+          status
+        }
+      }
+
+      return mergedOrders
     })
 
     return purchaseOrders
-    // try {
-    // const po_times = await strapi.entityService.findMany(
-    //   'api::po-time.po-time',
-    //   {
-    //     fields: ['datetime_start', 'datetime_end'],
-    //     filters: {
-    //       production_order: { part_number: part_number },
-    //       datetime_end: {
-    //         $gte: sub(new Date(), {
-    //           days: 30
-    //         })
-    //       }
-    //     },
-    //     populate: ['production_order', 'standart_time']
-    //   }
-    // )
+  },
+  updateOrCreate: async (data) => {
+    const purchaseOrder = await strapi.db
+      .query('api::purchase-order.purchase-order')
+      .findOne({
+        where: { protheus_number: data.protheus_number }
+      })
 
-    // const po_timesEfficiency = getEfficiency(po_times)
-
-    // const po_timeAvg = getEfficienctAverageByParam(po_timesEfficiency, 'day')
-
-    // return po_timeAvg
-    // } catch (err) {
-    //   console.log(err)
-    //   return err
-    // }
+    if (!purchaseOrder) {
+      const newPurchaseOrder = await strapi.entityService.create(
+        'api::purchase-order.purchase-order',
+        {
+          data: data
+        }
+      )
+      return newPurchaseOrder
+    } else {
+      const updatedPurchaseOrder = await strapi.entityService.update(
+        'api::purchase-order.purchase-order',
+        purchaseOrder.id,
+        {
+          data: data
+        }
+      )
+      return updatedPurchaseOrder
+    }
   }
 }

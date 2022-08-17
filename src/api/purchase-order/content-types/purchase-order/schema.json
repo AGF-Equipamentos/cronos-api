@@ -19,7 +19,20 @@
       "type": "text"
     },
     "protheus_number": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "Aguardando aprovação",
+        "Aguardando envio ao fornecedor",
+        "Aguardando confirmação",
+        "Confirmado",
+        "Atrasado"
+      ],
+      "default": "Aguardando aprovação"
     }
   }
 }

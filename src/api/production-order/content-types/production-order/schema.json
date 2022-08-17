@@ -28,6 +28,17 @@
       "relation": "oneToMany",
       "target": "api::po-time.po-time",
       "mappedBy": "production_order"
+    },
+    "Status": {
+      "type": "enumeration",
+      "enum": [
+        "Aguardando aprovação",
+        "Aguardando envio ao fornecedor",
+        "Aguardando confirmação",
+        "Confirmado",
+        "Atrasado"
+      ],
+      "default": "Aguardando aprovação"
     }
   }
 }
