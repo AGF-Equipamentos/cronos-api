@@ -29,7 +29,7 @@ describe('getEfficiency', () => {
         efficiency: 10 / 3, // 3 => (11 - 5) / 2
         month: 6,
         week: 27,
-        rt_in_minutes: 6
+        rt_in_minutes: 6 // 11 - 5
       },
       {
         id: 2,
@@ -54,7 +54,7 @@ describe('getEfficiency', () => {
         efficiency: 15.5 / 4.5, // 4.5 => (10 - 1) / 2
         month: 6,
         week: 27,
-        rt_in_minutes: 9
+        rt_in_minutes: 9 // 10 - 1
       }
     ])
   })
