@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
 /**
  *  stop-type controller
  */
 
-const { createCoreController } = require('@strapi/strapi').factories;
+const { createCoreController } = require('@strapi/strapi').factories
 
-module.exports = createCoreController('api::stop-type.stop-type');
+module.exports = createCoreController('api::stop-type.stop-type')

@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
 /**
  * downtime service.
  */
 
-const { createCoreService } = require('@strapi/strapi').factories;
+const { createCoreService } = require('@strapi/strapi').factories
 
-module.exports = createCoreService('api::downtime.downtime');
+module.exports = createCoreService('api::downtime.downtime')

@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
 /**
  *  downtime controller
  */
 
-const { createCoreController } = require('@strapi/strapi').factories;
+const { createCoreController } = require('@strapi/strapi').factories
 
-module.exports = createCoreController('api::downtime.downtime');
+module.exports = createCoreController('api::downtime.downtime')

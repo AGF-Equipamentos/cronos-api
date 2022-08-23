@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
 /**
  * process service.
  */
 
-const { createCoreService } = require('@strapi/strapi').factories;
+const { createCoreService } = require('@strapi/strapi').factories
 
-module.exports = createCoreService('api::process.process');
+module.exports = createCoreService('api::process.process')

@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
 /**
  * department service.
  */
 
-const { createCoreService } = require('@strapi/strapi').factories;
+const { createCoreService } = require('@strapi/strapi').factories
 
-module.exports = createCoreService('api::department.department');
+module.exports = createCoreService('api::department.department')

@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
 /**
  * process router.
  */
 
-const { createCoreRouter } = require('@strapi/strapi').factories;
+const { createCoreRouter } = require('@strapi/strapi').factories
 
-module.exports = createCoreRouter('api::process.process');
+module.exports = createCoreRouter('api::process.process')
