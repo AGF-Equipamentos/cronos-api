@@ -12,10 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "part_number": {
-      "type": "string",
-      "unique": false
-    },
     "qty": {
       "type": "decimal",
       "required": true
@@ -28,6 +24,11 @@
       "relation": "oneToMany",
       "target": "api::po-time.po-time",
       "mappedBy": "production_order"
+    },
+    "process_detail": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::process-detail.process-detail"
     }
   }
 }

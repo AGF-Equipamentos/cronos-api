@@ -3,7 +3,7 @@
 const { sub } = require('date-fns')
 const {
   getEfficienctAverageByParam
-} = require('../../../utils/average/getEfficienctAverageByParam')
+} = require('../../../utils/efficienctAverageByParam/getEfficienctAverageByParam')
 const { getEfficiency } = require('../../../utils/efficiency/getEfficiency')
 
 module.exports = {

@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "process_details",
+  "info": {
+    "singularName": "process-detail",
+    "pluralName": "process-details",
+    "displayName": "Process Detail",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Codigo": {
+      "type": "string"
+    },
+    "Qtd_Maq": {
+      "type": "integer"
+    },
+    "Descricao": {
+      "type": "string"
+    },
+    "Corte": {
+      "type": "boolean"
+    },
+    "Furacao": {
+      "type": "boolean"
+    },
+    "Usinagem": {
+      "type": "boolean"
+    },
+    "Cod_Materia_Prima": {
+      "type": "string"
+    },
+    "Materia_Prima": {
+      "type": "string"
+    },
+    "Comprimento_mm": {
+      "type": "integer"
+    },
+    "Peso_peca_KG": {
+      "type": "decimal"
+    }
+  }
+}
