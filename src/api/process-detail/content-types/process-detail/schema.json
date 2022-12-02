@@ -12,34 +12,35 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Codigo": {
-      "type": "string"
+    "part_number": {
+      "type": "string",
+      "unique": true
     },
-    "Qtd_Maq": {
+    "qty_machine": {
       "type": "integer"
     },
-    "Descricao": {
+    "description": {
       "type": "string"
     },
-    "Corte": {
+    "cut": {
       "type": "boolean"
     },
-    "Furacao": {
+    "drilling": {
       "type": "boolean"
     },
-    "Usinagem": {
+    "machining": {
       "type": "boolean"
     },
-    "Cod_Materia_Prima": {
+    "cod_raw_material": {
       "type": "string"
     },
-    "Materia_Prima": {
+    "raw_material": {
       "type": "string"
     },
-    "Comprimento_mm": {
+    "length_mm": {
       "type": "integer"
     },
-    "Peso_peca_KG": {
+    "part_weight_kg": {
       "type": "decimal"
     }
   }
