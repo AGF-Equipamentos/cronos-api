@@ -38,16 +38,16 @@
     "datetime_end": {
       "type": "datetime"
     },
+    "standart_time": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::standart-time.standart-time"
+    },
     "production_order": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::production-order.production-order",
       "inversedBy": "po_times"
-    },
-    "standart_time": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::standart-time.standart-time"
     }
   }
 }

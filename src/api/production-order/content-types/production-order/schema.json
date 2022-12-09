@@ -19,16 +19,21 @@
     "obs": {
       "type": "string"
     },
+    "process_detail": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::process-detail.process-detail"
+    },
     "po_times": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::po-time.po-time",
       "mappedBy": "production_order"
     },
-    "process_detail": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::process-detail.process-detail"
+    "finished": {
+      "type": "boolean",
+      "default": false,
+      "required": false
     }
   }
 }
